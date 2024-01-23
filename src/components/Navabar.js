@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import Cart from '../screens/Cart';
 
 export default function Navabar() {
-  const[cartView , setcartView] = useState(true)
+  const[cartView , setcartView] = useState(false)
   const navigate = useNavigate();
   const handleLogout = ()=>{
     localStorage.removeItem("authToken") // if some one logout remove its AuthToken from storage

@@ -8,6 +8,7 @@ switch(action.type){
         return [...state,{id:action.id , name:action.name , price:action.price , qty:action.qty , size:action.size,img:action.img}]
         default:
             console.log("Error in reducer");
+            
 }
 }
 

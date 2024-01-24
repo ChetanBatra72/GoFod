@@ -12,8 +12,35 @@ export default function Card(props) {
 const [qty , setqty] = useState('1')
 const [size , setsize] = useState("")
 const handleAddtoCard =async()=>{
-await dispatch({type:"ADD", id:props.foodItem._id , name:props.foodItem.name ,price:finalPrice,qty:qty,size:size ,img:props.foodItem.img})
-console.log(data);
+  let food = []
+  // abhi tak jo daal chuka hu to check kr rahu jo ab daal raha hu vo pahale sae to ni h 
+  for(const item of data){
+    if(item.id === props.foodItem._id){
+      food= item;
+      break;
+    }
+  }
+
+  if(food.length !== 0){
+    // that means order is still half/full we just upgrade the qty therefore update req is needed
+   if(food.size === size){
+    console.log("update is called")
+    await dispatch({type:"UPDATE" , id:props.foodItem._id , price:finalPrice ,qty:qty})
+    return 
+   }
+  
+  else if(food.size !== size){
+    console.log("item is present but this tym size is different ")
+ await dispatch({type:"ADD", id:props.foodItem._id , name:props.foodItem.name ,price:finalPrice,qty:qty,size:size ,img:props.foodItem.img})
+ return 
+
+  }
+  return 
+}
+  console.log("item added for first time");
+  await dispatch({type:"ADD", id:props.foodItem._id , name:props.foodItem.name ,price:finalPrice,qty:qty,size:size ,img:props.foodItem.img})
+ 
+
 }
 
 let finalPrice = qty * parseInt(options[size]);

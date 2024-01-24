@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family:'NHaasGroteskDSPro-65Md' !important;
+  /* background-color: black !important; */
 }
 
 code {
@@ -15,3 +16,4 @@ code {
 #carousel{
   max-height: 500px;
 }
+

@@ -9,7 +9,8 @@ const MODAL_STYLE={
     transform:'translate(-50% , -50%)',
     zINdex :10000,
     height:'90%',
-    width:'90%'
+    width:'90%',
+
 }
 //below design is for background 
 const OVERLAY_STYLES={
@@ -20,18 +21,34 @@ const OVERLAY_STYLES={
     right:0,
     backgroundColor: 'rgba(0,0,0,0.7)' ,
     zINdex :10000,
-
 }
-export default function Modal({children,onclose}) {
+
+export default function Modal({ children, onclose }) {
   return ReactDOM.createPortal(
     <>
-    <div style={OVERLAY_STYLES}/>
-    <div style={MODAL_STYLE}>
-    <button className='btn bg-danger fs-4' style={{margin:"90%",marginTop:"-35px"}}onClick={onclose}>X</button>
-    {children}
-    </div>
-    {children}
-    
-    </> ,document.getElementById('card-root')
-  )
+      <div style={OVERLAY_STYLES} />
+      <div style={MODAL_STYLE}>
+        <button className='btn bg-danger fs-4' style={{ position: 'absolute', top: '10px', right: '10px' }} onClick={onclose}>
+          X
+        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+          {children}
+        </div>
+      </div>
+    </>,
+    document.getElementById('card-root')
+  );
 }
+// export default function Modal({children,onclose}) {
+//   return ReactDOM.createPortal(
+//     <>
+//     <div style={OVERLAY_STYLES}/>
+//     <div style={MODAL_STYLE}>
+//     <button className='btn bg-danger fs-4' style={{margin:"90%",marginTop:"-35px"}}onClick={onclose}>X</button>
+//     {children}
+//     </div>
+//     {children}
+    
+//     </> ,document.getElementById('card-root')
+//   )
+// }

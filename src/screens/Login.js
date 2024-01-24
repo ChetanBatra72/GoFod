@@ -1,7 +1,6 @@
 import React ,{useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom'
- 
-
+import Navabar from '../components/Navabar'
 export default function Login() {
    let navigate  = useNavigate() // for redirecting it to somewhere
   const [credentials, setcredentials] = useState({email:"" ,password:"" })
@@ -38,17 +37,22 @@ export default function Login() {
   const onchange  = (evt)=>{
       setcredentials({...credentials , [evt.target.name]:evt.target.value})
   }
-  return <div>
+  return(
+   <div style={{backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
+  
+   <div>
+     <Navabar/>
+    </div>
     <div className='container'>
 
 <form onSubmit={handleSubmit}>
 <div className="mb-3">
-<label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+<label htmlFor="exampleInputEmail1" className="form-label"  style={{color:"Black"}}>Email address</label>
 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' value={credentials.email}  onChange={onchange}/>
-<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+<div id="emailHelp" className="form-text" style={{color:"white"}}>We'll never share your email with anyone else.</div>
 </div>
 <div className="mb-3">
-<label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+<label htmlFor="exampleInputPassword1" className="form-label" style={{color:"Black"}}>Password</label>
 <input type="password" className="form-control" id="exampleInputPassword1" name='password' value={credentials.password} onChange={onchange} />
 </div>
 
@@ -58,5 +62,6 @@ export default function Login() {
 
 </div>
 
-  </div>;
+  </div>
+  )
 }

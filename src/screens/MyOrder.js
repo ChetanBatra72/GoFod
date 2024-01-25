@@ -5,7 +5,7 @@ export default function MyOrder() {
     //  = useState()
     const [orderData ,setOrderData] = useState("")
     const fetchMyOrder = async()=>{
-        console.log(localStorage.getItem('userEmail'))
+        // console.log(localStorage.getItem('userEmail'))
         await fetch("http://localhost:5000/api/myorderData" ,{
             method:'POST',
             headers:{
